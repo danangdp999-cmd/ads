@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# JANGAN rewrite host-wizard-basic.php (biarkan PHP file ini jalan langsung)
+RewriteRule ^host-wizard-basic\.php$ - [L]
+
+# Catch-all ke index.php untuk URL lain (SPA / homepage)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “alt-php84” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-alt-php84 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
